@@ -1,6 +1,8 @@
 ![Nuget](https://img.shields.io/nuget/v/TypeCaster)
+![Nuget](https://img.shields.io/nuget/dt/TypeCaster)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/GuzzoLM/TypeCaster/Tests)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/GuzzoLM/TypeCaster/Main%20Branch)
 
 # TypeCaster
 
