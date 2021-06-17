@@ -11,9 +11,7 @@ Imagine a class with the following properties
 public class TestClassA
 {
   public int Id { get; set; }
-
   public string Name { get; set; }
-
   public MyEnum Type { get; set; }
 }
 ```
@@ -24,9 +22,7 @@ And another claass with a similar structure, but with a string intead of enum in
 public class TestClassB
 {
   public int Id { get; set; }
-
   public string Name { get; set; }
-
   public string Type { get; set; }
 }
 ```
