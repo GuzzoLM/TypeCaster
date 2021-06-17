@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeCaster", "TypeCaster\TypeCaster.csproj", "{76A91F90-965C-414A-8FD6-C8E526E60558}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TypeCaster.UnitTests", "TypeCaster.UnitTests\TypeCaster.UnitTests.csproj", "{CF8FBD2C-A756-49A7-8519-650106726488}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76A91F90-965C-414A-8FD6-C8E526E60558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A91F90-965C-414A-8FD6-C8E526E60558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A91F90-965C-414A-8FD6-C8E526E60558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A91F90-965C-414A-8FD6-C8E526E60558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF8FBD2C-A756-49A7-8519-650106726488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF8FBD2C-A756-49A7-8519-650106726488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF8FBD2C-A756-49A7-8519-650106726488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF8FBD2C-A756-49A7-8519-650106726488}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

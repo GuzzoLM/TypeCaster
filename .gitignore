@@ -5,6 +5,5 @@ src/.idea/.idea.TypeCaster/.idea/
 
 bin/
 obj/
-*.sln
 
 src/TypeCaster.sln.DotSettings.user
