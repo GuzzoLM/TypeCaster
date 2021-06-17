@@ -28,7 +28,6 @@ namespace TypeCaster.UnitTests
             };
 
             // Act
-            // var classB = classA.Cast<TestClassB>();
             var classB = CastToClass<TestClassB>.From(classA);
 
             // Assert
@@ -61,7 +60,6 @@ namespace TypeCaster.UnitTests
             };
 
             // Act
-            // var classB = classA.Cast<TestClassB>();
             var classA = CastToClass<TestClassA>.From(classB);
 
             // Assert

@@ -3,13 +3,23 @@ using System.Linq.Expressions;
 
 namespace TypeCaster
 {
+    /// <summary>
+    /// Class to cast to type <see cref="T"/>
+    /// </summary>
+    /// <typeparam name="T">Target type</typeparam>
     public static class CastTo<T>
     {
-        public static T From<S>(S src)
+        /// <summary>
+        /// Casts <see cref="TS"/> to <see cref="T"/>.
+        /// </summary>
+        /// <param name="src">The source value to be casted.</param>
+        /// <typeparam name="TS">Source type to cast from.</typeparam>
+        /// <returns>Returns a value of type <see cref="T"/> with the same value <see cref="src"/>.</returns>
+        public static T From<TS>(TS src)
         {
             try
             {
-                return Cache<S>.Caster(src);
+                return Cache<TS>.Caster(src);
             }
             catch (Exception)
             {
@@ -18,7 +28,7 @@ namespace TypeCaster
                     return From(src.ToString());
                 }
 
-                if (typeof(T).IsEnum && typeof(S) == typeof(string))
+                if (typeof(T).IsEnum && typeof(TS) == typeof(string))
                 {
                     if (Enum.TryParse(typeof(T), src.ToString(), false, out var resultEnum))
                     {
@@ -30,15 +40,15 @@ namespace TypeCaster
             }
         }
 
-        private static class Cache<S>
+        private static class Cache<TS>
         {
-            public static readonly Func<S, T> Caster = Get();
+            public static readonly Func<TS, T> Caster = Get();
 
-            private static Func<S, T> Get()
+            private static Func<TS, T> Get()
             {
-                var p = Expression.Parameter(typeof(S));
+                var p = Expression.Parameter(typeof(TS));
                 var c = Expression.ConvertChecked(p, typeof(T));
-                return Expression.Lambda<Func<S, T>>(c, p).Compile();
+                return Expression.Lambda<Func<TS, T>>(c, p).Compile();
             }
         }
     }

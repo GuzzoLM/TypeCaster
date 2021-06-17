@@ -5,11 +5,21 @@ using System.Reflection;
 
 namespace TypeCaster
 {
+    /// <summary>
+    /// Cast to type <see cref="T"/>.
+    /// </summary>
+    /// <typeparam name="T">Target type.</typeparam>
     public static class CastToClass<T> where T : class
     {
-        public static T From<S>(S src) where S : class
+        /// <summary>
+        /// Casts <see cref="TS"/> to <see cref="T"/>.
+        /// </summary>
+        /// <param name="src">The source class to be casted.</param>
+        /// <typeparam name="TS">Source type to cast from.</typeparam>
+        /// <returns>Returns a class of type <see cref="T"/> with the same property values of the original <see cref="TS"/> class.</returns>
+        public static T From<TS>(TS src) where TS : class
         {
-            var srcMembers = Cache<S>.Members;
+            var srcMembers = SrcInfo<TS>.Members;
 
             var destType = typeof(T);
 
@@ -52,14 +62,13 @@ namespace TypeCaster
                 .ToDictionary(x => x.Name, x => srcType.GetProperty(x.Name));
         }
 
-        private static class Cache<S>
+        private static class SrcInfo<TS>
         {
-
             public static readonly Dictionary<string, PropertyInfo> Members = GetMembers();
 
             private static Dictionary<string, PropertyInfo> GetMembers()
             {
-                var srcType = typeof(S);
+                var srcType = typeof(TS);
 
                 return srcType.GetMembers()
                     .Where(x => x.MemberType == MemberTypes.Property)
