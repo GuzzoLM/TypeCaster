@@ -1,6 +1,6 @@
 ![Nuget](https://img.shields.io/nuget/v/TypeCaster)
 
-[![Tests](https://github.com/GuzzoLM/TypeCaster/actions/workflows/tests.yml/badge.svg)](https://github.com/GuzzoLM/TypeCaster/actions/workflows/tests.yml)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/GuzzoLM/TypeCaster/Tests)
 
 # TypeCaster
 
