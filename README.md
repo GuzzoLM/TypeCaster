@@ -1,3 +1,4 @@
+[![Tests](https://github.com/GuzzoLM/TypeCaster/actions/workflows/tests.yml/badge.svg)](https://github.com/GuzzoLM/TypeCaster/actions/workflows/tests.yml)
 # TypeCaster
 
 Every now and then developers need to map an entity to another class, with a similar structure, for the sake of decoupling and separation of concerns.
