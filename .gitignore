@@ -1,0 +1,10 @@
+
+src/.idea/.idea.TypeCaster/.idea/
+
+.DS_Store
+
+bin/
+obj/
+*.sln
+
+src/TypeCaster.sln.DotSettings.user
