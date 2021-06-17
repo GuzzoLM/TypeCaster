@@ -1,4 +1,4 @@
-![Nuget](https://img.shields.io/nuget/v/TypeCaster)
+[![Nuget](https://img.shields.io/nuget/v/TypeCaster)](https://www.nuget.org/packages/TypeCaster/)
 ![Nuget](https://img.shields.io/nuget/dt/TypeCaster)
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/GuzzoLM/TypeCaster/Tests)
@@ -8,6 +8,22 @@
 
 Every now and then developers need to map an entity to another class, with a similar structure, for the sake of decoupling and separation of concerns.
 To avoid manual mapping, which is boring and error prone, TypeCaster offers a simple and elegant solution to automatically cast on class type into anohter.
+
+## Installation
+
+InMemoryDatabase runs on Windows, Linux, and macOS using [.NET Core](https://github.com/dotnet/core).
+
+You can install the InMemoryDatabase NuGet package from the .NET Core CLI using:
+```
+dotnet add package TypeCaster
+```
+
+or from the NuGet package manager:
+```
+Install-Package TypeCaster
+```
+
+Or alternatively, you can add the InMemoryDatabase package from within Visual Studio's NuGet package manager or via [Paket](https://github.com/fsprojects/Paket).
 
 ## Usage
 
