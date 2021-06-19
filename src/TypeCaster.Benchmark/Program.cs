@@ -1,4 +1,5 @@
 ﻿using System;
+using BenchmarkDotNet.Running;
 
 namespace TypeCaster.Benchmark
 {
@@ -6,7 +7,7 @@ namespace TypeCaster.Benchmark
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var summary = BenchmarkRunner.Run<TypeCastBenchmark>();
         }
     }
 }

@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\TypeCaster.TestClasses\TypeCaster.TestClasses.csproj" />
       <ProjectReference Include="..\TypeCaster\TypeCaster.csproj" />
     </ItemGroup>
 

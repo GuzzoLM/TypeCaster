@@ -29,29 +29,32 @@ namespace TypeCaster
             {
                 var srcProperty = srcMembers[key];
 
-                if (srcProperty?.PropertyType == propertyInfo.PropertyType)
-                {
-                    var value = srcProperty?.GetValue(src, null);
-                    propertyInfo.SetValue(dest, value, null);
-                }
-                else
-                {
-                    var srcValue = srcProperty?.GetValue(src, null);
+                var value = (srcProperty?.PropertyType == propertyInfo.PropertyType)
+                    ? srcProperty?.GetValue(src, null)
+                    : ConvertValue(
+                        GetDefault(propertyInfo.PropertyType),
+                        GetDefault(srcProperty.PropertyType),
+                        srcProperty.GetValue(src, null));
 
-                    var generic = typeof(CastTo<>);
-                    var castTo = generic.MakeGenericType(propertyInfo.PropertyType);
-                    var method = castTo.GetMethod("From")?.MakeGenericMethod(srcProperty.PropertyType);
-
-                    var value = method?.Invoke(null, new[] { srcValue });
-
-                    propertyInfo.SetValue(dest, value, null);
-                }
+                propertyInfo.SetValue(dest, value, null);
             }
 
             return (T)dest;
         }
 
-        public static readonly Dictionary<string, PropertyInfo> Members = GetMembers();
+        private static readonly Dictionary<string, PropertyInfo> Members = GetMembers();
+
+        private static TP ConvertValue<TP, TPS>(TP defaultValue, TPS defaultSrcValue, object input) => CastTo<TP>.From((TPS)input);
+
+        private static dynamic GetDefault(Type type)
+        {
+            if (type == typeof(string))
+            {
+                return string.Empty;
+            }
+
+            return type.IsValueType ? Activator.CreateInstance(type) : null;
+        }
 
         private static Dictionary<string, PropertyInfo> GetMembers()
         {
