@@ -11,9 +11,9 @@ To avoid manual mapping, which is boring and error prone, TypeCaster offers a si
 
 ## Installation
 
-InMemoryDatabase runs on Windows, Linux, and macOS using [.NET Core](https://github.com/dotnet/core).
+TypeCaster runs on Windows, Linux, and macOS using [.NET Core](https://github.com/dotnet/core).
 
-You can install the InMemoryDatabase NuGet package from the .NET Core CLI using:
+You can install the TypeCaster NuGet package from the .NET Core CLI using:
 ```
 dotnet add package TypeCaster
 ```
@@ -23,7 +23,7 @@ or from the NuGet package manager:
 Install-Package TypeCaster
 ```
 
-Or alternatively, you can add the InMemoryDatabase package from within Visual Studio's NuGet package manager or via [Paket](https://github.com/fsprojects/Paket).
+Or alternatively, you can add the TypeCaster package from within Visual Studio's NuGet package manager or via [Paket](https://github.com/fsprojects/Paket).
 
 ## Usage
 
