@@ -80,3 +80,15 @@ var type = CastTo<TestEnum>.From(typeString);
 var myInt = 1;
 var myDouble = CastTo<double>.From(myInt);
 ```
+
+## Benchmark
+
+TypeCaster comes with a cost in application performance. It's not a big impact, but is significantly slower than both Manual mappings and AutoMapper and this should be taken in consideration when using this feature in your project.
+The following table shows the difference in performance between these methods.
+
+
+|     Method |        Mean |     Error |    StdDev |
+|----------- |------------:|----------:|----------:|
+| TypeCaster | 7,762.83 ns | 69.038 ns | 67.804 ns |
+|  ManualMap |    53.97 ns |  1.076 ns |  0.954 ns |
+|    AutoMap |   160.26 ns |  2.939 ns |  2.294 ns |
