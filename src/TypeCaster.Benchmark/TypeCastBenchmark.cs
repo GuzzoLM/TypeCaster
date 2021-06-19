@@ -5,6 +5,7 @@ using TypeCaster.TestClasses;
 
 namespace TypeCaster.Benchmark
 {
+    [MarkdownExporterAttribute.GitHub]
     public class TypeCastBenchmark
     {
         private readonly TestClassA _testClass = TestClassA.RandomClass();
@@ -22,7 +23,7 @@ namespace TypeCaster.Benchmark
         [Benchmark]
         public TestClassB ManualMap()
         {
-            return new TestClassB
+            return new()
             {
                 Age = _testClass.Age,
                 Animal = _testClass.Animal.ToString(),
