@@ -23,19 +23,6 @@ namespace TypeCaster
             }
             catch (Exception)
             {
-                if (typeof(T) == typeof(string))
-                {
-                    return From(src.ToString());
-                }
-
-                if (typeof(T).IsEnum && typeof(TS) == typeof(string))
-                {
-                    if (Enum.TryParse(typeof(T), src.ToString(), false, out var resultEnum))
-                    {
-                        return (T)resultEnum;
-                    }
-                }
-
                 return default;
             }
         }
@@ -46,9 +33,13 @@ namespace TypeCaster
 
             private static Func<TS, T> Get()
             {
-                var p = Expression.Parameter(typeof(TS));
-                var c = Expression.ConvertChecked(p, typeof(T));
-                return Expression.Lambda<Func<TS, T>>(c, p).Compile();
+                if (typeof(T).IsEnum && typeof(TS) == typeof(string))
+                {
+                    return (input) => Enum.TryParse(typeof(T), input.ToString(), false, out var resultEnum)
+                        ? (T)resultEnum
+                        : default;
+                }
+                return (input) => (T) Convert.ChangeType(input, typeof (T));
             }
         }
     }

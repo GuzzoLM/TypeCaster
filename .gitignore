@@ -7,3 +7,5 @@ bin/
 obj/
 
 src/TypeCaster.sln.DotSettings.user
+
+*.sln

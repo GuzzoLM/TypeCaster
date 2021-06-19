@@ -1,15 +1,13 @@
 using NUnit.Framework;
-using TypeCaster.UnitTests.Stub;
+using TypeCaster.TestClasses;
 
 namespace TypeCaster.UnitTests
 {
     public class CastToTests
     {
         [Test]
-        public void ConvertEnumToString()
+        public void ConvertEnumToString([Values] TestEnumA type)
         {
-            var type = TestEnum.TypeA;
-
             var expectedString = type.ToString();
 
             // Act
@@ -19,16 +17,40 @@ namespace TypeCaster.UnitTests
         }
 
         [Test]
-        public void ConvertStringToEnum()
+        public void ConvertStringToEnum([Values] TestEnumB expectedType)
         {
-            var expectedType = TestEnum.TypeA;
-
-            var typeString = "TypeA";
+            var typeString = expectedType.ToString();
 
             // Act
-            var resultType = CastTo<TestEnum>.From(typeString);
+            var resultType = CastTo<TestEnumB>.From(typeString);
 
             Assert.AreEqual(expectedType, resultType);
+        }
+
+        [Test]
+        public void ConvertIntToBoolean([Values] bool expectedBoolean)
+        {
+            // Assert
+            var testInt = expectedBoolean ? 1 : 0;
+
+            // Act
+            var resultedBoolean = CastTo<bool>.From(testInt);
+
+            // Assert
+            Assert.AreEqual(expectedBoolean, resultedBoolean);
+        }
+
+        [Test]
+        public void ConvertBooleanToInt([Values] bool testBoolean)
+        {
+            // Assert
+            var expectedInt = testBoolean ? 1 : 0;
+
+            // Act
+            var resultedInt = CastTo<int>.From(testBoolean);
+
+            // Assert
+            Assert.AreEqual(expectedInt, resultedInt);
         }
     }
 }

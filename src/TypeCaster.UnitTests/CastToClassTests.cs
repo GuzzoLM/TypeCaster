@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using TypeCaster.UnitTests.Stub;
+using TypeCaster.TestClasses;
 
 namespace TypeCaster.UnitTests
 {
@@ -9,64 +9,69 @@ namespace TypeCaster.UnitTests
         public void ConvertClassAToClassB()
         {
             // Arrange
-            var id = 1;
-            var name = "MyClass";
-            var type = TestEnum.TypeA;
-
-            var classA = new TestClassA
-            {
-                Id = id,
-                Name = name,
-                Type = type
-            };
+            var classA = TestClassA.RandomClass();
 
             var expectedClassB = new TestClassB
             {
-                Id = id,
-                Name = name,
-                Type = type.ToString()
+                Id = classA.Id,
+                Name = classA.Name,
+                Age = classA.Age,
+                Animal = classA.Animal.ToString(),
+                Vehicle = classA.Vehicle.FromString(),
+                Year = (int)classA.Year,
+                IsCorrect = classA.IsCorrect ? 1 : 0,
+                IsIncorrect = classA.IsIncorrect == 1
             };
 
             // Act
-            var classB = CastToClass<TestClassB>.From(classA);
+            var resultedClassB = CastToClass<TestClassB>.From(classA);
+
+            if (expectedClassB.IsIncorrect != resultedClassB.IsIncorrect)
+            {
+                Assert.AreEqual(expectedClassB.IsIncorrect, resultedClassB.IsIncorrect);
+            }
 
             // Assert
-
-            Assert.AreEqual(expectedClassB.Id, classB.Id);
-            Assert.AreEqual(expectedClassB.Name, classB.Name);
-            Assert.AreEqual(expectedClassB.Type, classB.Type);
+            Assert.AreEqual(expectedClassB.Id, resultedClassB.Id);
+            Assert.AreEqual(expectedClassB.Name, resultedClassB.Name);
+            Assert.AreEqual(expectedClassB.Age, resultedClassB.Age);
+            Assert.AreEqual(expectedClassB.Animal, resultedClassB.Animal);
+            Assert.AreEqual(expectedClassB.Vehicle, resultedClassB.Vehicle);
+            Assert.AreEqual(expectedClassB.Year, resultedClassB.Year);
+            Assert.AreEqual(expectedClassB.IsCorrect, resultedClassB.IsCorrect);
+            Assert.AreEqual(expectedClassB.IsIncorrect, resultedClassB.IsIncorrect);
         }
 
         [Test]
         public void ConvertClassBToClassA()
         {
             // Arrange
-            var id = 1;
-            var name = "MyClass";
-            var type = TestEnum.TypeA;
+            var expectedClassA = TestClassA.RandomClass();
 
             var classB = new TestClassB
             {
-                Id = id,
-                Name = name,
-                Type = type.ToString()
-            };
-
-            var expectedClassA = new TestClassA
-            {
-                Id = id,
-                Name = name,
-                Type = type
+                Id = expectedClassA.Id,
+                Name = expectedClassA.Name,
+                Age = expectedClassA.Age,
+                Animal = expectedClassA.Animal.ToString(),
+                Vehicle = expectedClassA.Vehicle.FromString(),
+                Year = (int)expectedClassA.Year,
+                IsCorrect = expectedClassA.IsCorrect ? 1 : 0,
+                IsIncorrect = expectedClassA.IsIncorrect == 1
             };
 
             // Act
-            var classA = CastToClass<TestClassA>.From(classB);
+            var resultedClassA = CastToClass<TestClassA>.From(classB);
 
             // Assert
-
-            Assert.AreEqual(expectedClassA.Id, classA.Id);
-            Assert.AreEqual(expectedClassA.Name, classA.Name);
-            Assert.AreEqual(expectedClassA.Type, classA.Type);
+            Assert.AreEqual(expectedClassA.Id, resultedClassA.Id);
+            Assert.AreEqual(expectedClassA.Name, resultedClassA.Name);
+            Assert.AreEqual(expectedClassA.Age, resultedClassA.Age);
+            Assert.AreEqual(expectedClassA.Animal, resultedClassA.Animal);
+            Assert.AreEqual(expectedClassA.Vehicle, resultedClassA.Vehicle);
+            Assert.AreEqual(expectedClassA.Year, resultedClassA.Year);
+            Assert.AreEqual(expectedClassA.IsCorrect, resultedClassA.IsCorrect);
+            Assert.AreEqual(expectedClassA.IsIncorrect, resultedClassA.IsIncorrect);
         }
     }
 }
